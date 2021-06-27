@@ -1,7 +1,7 @@
 <?php
+namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,5 +14,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
+
+Route::get('/data','App\Http\Controllers\ScrapingController@index');
+
+Route::get('/master', function () {
+    return view('master/index');
+});
+
+
+Route::get('/master/store','App\Http\Controllers\MasterStoreController@index');
+Route::get('/master/{store_id}/slot','App\Http\Controllers\MasterSlotController@edit');
+Route::post('/master/store/slot/create','App\Http\Controllers\MasterSlotController@slotcreate');
+
+
+Route::get('/datas/index','App\Http\Controllers\DatasController@index');
